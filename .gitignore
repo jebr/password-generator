@@ -127,3 +127,17 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Custom settings
+git status
+/venv
+.idea/
+/*.cmake
+/*.DS_Store
+/.user
+/build
+/dist/
+/__pycache__
+/example_data
+/src/build
+System Volume Information
