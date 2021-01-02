@@ -3,10 +3,10 @@ Password generator PyQT UI functions
 """
 
 import pyperclip
+from PyQt5.uic.properties import QtWidgets
 
-from src import basicfunc as bf
-from src import main as qt
-from src import passgen as pg
+import basicfunc as bf
+import passgen as pg
 
 resource_path = bf.BasicFunc.resource_path
 
@@ -22,17 +22,19 @@ SYMBOLS4 = "\\/|_-"
 SYMBOLS5 = "<*+!?="
 SYMBOLS6 = "{[()]}"
 
-class UiFunc(Mainpage):
+class UiFunc:
+    def __init__(self):
+        super().__init__()
 
     def create_password(self):
         characters = []
-        if qt.check_az_capital.isChecked():
+        if self.check_az_capital.isChecked():
             characters.append(A_Z_CAPITAL)
 
-        length = qt.slider_password.value()
+        length = self.slider_password.value()
 
         password = pg.PasswordGenerator.create_password(length, characters)
-        qt.line_generated_password.setText(password)
+        self.line_generated_password.setText(password)
 
     def create_passphrase(self):
         pass

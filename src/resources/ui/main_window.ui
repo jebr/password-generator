@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -70,6 +70,9 @@
         <width>111</width>
         <height>16</height>
        </rect>
+      </property>
+      <property name="maximum">
+       <number>256</number>
       </property>
      </widget>
      <widget class="QGroupBox" name="groupBox">
