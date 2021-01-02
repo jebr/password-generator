@@ -19,13 +19,13 @@ class PasswordGenerator():
         return password
 
     @staticmethod
-    def random_dictionary_password_english(word_count, seperator, font_style,
+    def dictionary_passphrase(word_count, seperator, font_style,
                                            dictionary) -> str:
         """"
         Function to creata a passphrase based on dictionary words
         :param word_count: int
         :param seperator: string
-        :param font_style: string
+        :param font_style: int
         :param dictionary: string
         :return str -> passphrase:
         """
@@ -45,9 +45,10 @@ class PasswordGenerator():
 
         passphrase = str.join(str(seperator), password_words)
 
-        if font_style == "lower":
+        if font_style == 0:
             return passphrase.lower()
-        elif font_style == "capital":
-            return passphrase.capitalize()
-        else:
+        elif font_style == 1:
+            return passphrase.upper()
+        elif font_style == 2:
             return passphrase.title()
+

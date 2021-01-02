@@ -6,9 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1037</width>
-    <height>480</height>
+    <width>759</width>
+    <height>390</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>10</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -17,64 +22,24 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>150</y>
-      <width>951</width>
+      <x>10</x>
+      <y>110</y>
+      <width>721</width>
       <height>241</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="tab_password">
      <attribute name="title">
       <string>Wachtwoord</string>
      </attribute>
-     <widget class="QLabel" name="lb_password_length">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>30</y>
-        <width>47</width>
-        <height>13</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>length</string>
-      </property>
-     </widget>
-     <widget class="QSlider" name="slider_password">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>30</y>
-        <width>671</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="minimum">
-       <number>1</number>
-      </property>
-      <property name="maximum">
-       <number>256</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spin_password">
-      <property name="geometry">
-       <rect>
-        <x>770</x>
-        <y>30</y>
-        <width>111</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="maximum">
-       <number>256</number>
-      </property>
-     </widget>
      <widget class="QGroupBox" name="groupBox">
       <property name="geometry">
        <rect>
@@ -84,8 +49,13 @@
         <height>111</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
       <property name="title">
-       <string>Letters and Symols</string>
+       <string>Letters en symbolen</string>
       </property>
       <widget class="QCheckBox" name="check_symbols6">
        <property name="geometry">
@@ -96,8 +66,14 @@
          <height>17</height>
         </rect>
        </property>
+       <property name="statusTip">
+        <string>ALT + 9</string>
+       </property>
        <property name="text">
         <string>{ [ ( ) ] }</string>
+       </property>
+       <property name="shortcut">
+        <string>Alt+9</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="check_symbols5">
@@ -109,8 +85,14 @@
          <height>17</height>
         </rect>
        </property>
+       <property name="statusTip">
+        <string>ALT + 8</string>
+       </property>
        <property name="text">
         <string>&lt; * + ! ? =</string>
+       </property>
+       <property name="shortcut">
+        <string>Alt+8</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="check_numbers">
@@ -122,8 +104,14 @@
          <height>17</height>
         </rect>
        </property>
+       <property name="statusTip">
+        <string>ALT + 3</string>
+       </property>
        <property name="text">
         <string>0 - 9</string>
+       </property>
+       <property name="shortcut">
+        <string>Alt+3</string>
        </property>
        <property name="checked">
         <bool>true</bool>
@@ -138,8 +126,14 @@
          <height>17</height>
         </rect>
        </property>
+       <property name="statusTip">
+        <string>ALT + 4</string>
+       </property>
        <property name="text">
         <string># $ % &amp; @ ^ ` ~</string>
+       </property>
+       <property name="shortcut">
+        <string>Alt+4</string>
        </property>
        <property name="checked">
         <bool>true</bool>
@@ -154,8 +148,14 @@
          <height>17</height>
         </rect>
        </property>
+       <property name="statusTip">
+        <string>ALT + 5</string>
+       </property>
        <property name="text">
         <string>. , : ; </string>
+       </property>
+       <property name="shortcut">
+        <string>Alt+5</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="check_az_lower">
@@ -167,8 +167,14 @@
          <height>17</height>
         </rect>
        </property>
+       <property name="statusTip">
+        <string>ALT + 2</string>
+       </property>
        <property name="text">
         <string>a - z</string>
+       </property>
+       <property name="shortcut">
+        <string>Alt+2</string>
        </property>
        <property name="checked">
         <bool>true</bool>
@@ -183,8 +189,14 @@
          <height>17</height>
         </rect>
        </property>
+       <property name="statusTip">
+        <string>ALT + 7</string>
+       </property>
        <property name="text">
         <string>\  / | _ -</string>
+       </property>
+       <property name="shortcut">
+        <string>Alt+7</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="check_az_capital">
@@ -196,8 +208,14 @@
          <height>17</height>
         </rect>
        </property>
+       <property name="statusTip">
+        <string>ALT + 1</string>
+       </property>
        <property name="text">
         <string>A - Z</string>
+       </property>
+       <property name="shortcut">
+        <string>Alt+1</string>
        </property>
        <property name="checked">
         <bool>true</bool>
@@ -212,198 +230,306 @@
          <height>17</height>
         </rect>
        </property>
+       <property name="statusTip">
+        <string>ALT + 6</string>
+       </property>
        <property name="text">
         <string>&quot; '</string>
        </property>
+       <property name="shortcut">
+        <string>Alt+6</string>
+       </property>
       </widget>
      </widget>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>701</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="1">
+        <widget class="QSlider" name="slider_password">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="minimum">
+          <number>0</number>
+         </property>
+         <property name="maximum">
+          <number>256</number>
+         </property>
+         <property name="pageStep">
+          <number>10</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>10</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lb_password_length">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Lengte</string>
+         </property>
+         <property name="margin">
+          <number>5</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QSpinBox" name="spin_password">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="maximum">
+          <number>256</number>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="tab_passphrase">
      <attribute name="title">
       <string>Wachtwoordzin</string>
      </attribute>
-     <widget class="QSlider" name="slider_passphrase">
+     <widget class="QWidget" name="formLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>30</y>
-        <width>671</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="minimum">
-       <number>1</number>
-      </property>
-      <property name="maximum">
-       <number>40</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lb_passphrase_length">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>30</y>
-        <width>47</width>
-        <height>13</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="lb_passphrase_seperator">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>80</y>
-        <width>47</width>
-        <height>13</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="combo_passphrase_seperator">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
+        <x>10</x>
         <y>70</y>
-        <width>101</width>
-        <height>22</height>
+        <width>351</width>
+        <height>141</height>
        </rect>
       </property>
-      <item>
-       <property name="text">
-        <string>.</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>-</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>*</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>_</string>
-       </property>
-      </item>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="lb_passphrase_seperator">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Scheidingsteken</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="combo_passphrase_seperator">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>.</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>-</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>*</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>_</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="lb_passphrase_text">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Letter stijl</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="combo_passphrase_text">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>kleine letters</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>HOOFDLETTERS</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Eerste Letter Als Hoofdletter</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lb_passphrase_lang">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Woordenboek</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QComboBox" name="combo_passphrase_lang">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>Nederlands</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>English</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="check_passphrase_numbers">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Eindigen met 4 cijfers</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
-     <widget class="QSpinBox" name="spin_passphrase">
+     <widget class="QWidget" name="gridLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>780</x>
-        <y>30</y>
-        <width>111</width>
-        <height>16</height>
+        <x>10</x>
+        <y>10</y>
+        <width>701</width>
+        <height>51</height>
        </rect>
       </property>
-     </widget>
-     <widget class="QLabel" name="lb_passphrase_text">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>120</y>
-        <width>47</width>
-        <height>13</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="combo_passphrase_text">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>110</y>
-        <width>101</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <item>
-       <property name="text">
-        <string>Eerste Letter Als Hoofdletter</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>kleine letters</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>HOOFDLETTERS</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QLabel" name="lb_passphrase_lang">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>160</y>
-        <width>47</width>
-        <height>13</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="combo_passphrase_lang">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>150</y>
-        <width>101</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <item>
-       <property name="text">
-        <string>Nederlands</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>English</string>
-       </property>
-      </item>
-     </widget>
-     <widget class="QCheckBox" name="check_passphrase_numbers">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>190</y>
-        <width>271</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>End with 4 numbers</string>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
-      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="1">
+        <widget class="QSlider" name="slider_passphrase">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="pageStep">
+          <number>1</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="tickPosition">
+          <enum>QSlider::TicksBelow</enum>
+         </property>
+         <property name="tickInterval">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QSpinBox" name="spin_passphrase">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lb_passphrase_length">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Aantal woorden</string>
+         </property>
+         <property name="margin">
+          <number>5</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>
    <widget class="QLabel" name="lb_grade">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>130</y>
-      <width>47</width>
-      <height>13</height>
+      <x>10</x>
+      <y>80</y>
+      <width>131</width>
+      <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>grade</string>
@@ -412,46 +538,25 @@
    <widget class="QLineEdit" name="line_generated_password">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>70</y>
-      <width>761</width>
+      <x>10</x>
+      <y>30</y>
+      <width>721</width>
       <height>20</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pb_generate">
-    <property name="geometry">
-     <rect>
-      <x>810</x>
-      <y>70</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>pb_generate</string>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
    </widget>
-   <widget class="QPushButton" name="pb_copy">
+   <widget class="QProgressBar" name="progress_password_strength">
     <property name="geometry">
      <rect>
-      <x>890</x>
-      <y>70</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>pb_copy</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="progressBar">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>100</y>
-      <width>761</width>
-      <height>16</height>
+      <x>10</x>
+      <y>60</y>
+      <width>721</width>
+      <height>10</height>
      </rect>
     </property>
     <property name="value">
@@ -464,18 +569,102 @@
      <string>%p%</string>
     </property>
    </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>70</y>
+      <width>163</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="pb_generate">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="statusTip">
+        <string>Genereer wachtwoord (Enter)</string>
+       </property>
+       <property name="text">
+        <string>pb_generate</string>
+       </property>
+       <property name="shortcut">
+        <string>Return</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pb_copy">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="statusTip">
+        <string>Copy Password (Ctrl + C)</string>
+       </property>
+       <property name="text">
+        <string>pb_copy</string>
+       </property>
+       <property name="shortcut">
+        <string>Ctrl+C</string>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="lb_copy_password">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>80</y>
+      <width>231</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Wachtwoord gekopieerd naar klembord</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1037</width>
-     <height>21</height>
+     <width>759</width>
+     <height>23</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuInfo">
+    <property name="title">
+     <string>Info</string>
+    </property>
+    <addaction name="action_about"/>
+   </widget>
+   <addaction name="menuInfo"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_about">
+   <property name="text">
+    <string>Over deze applicatie</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
