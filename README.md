@@ -4,7 +4,7 @@
 ![Python version](https://img.shields.io/badge/python-3.7-blue) &nbsp;
 ![Windows version](https://img.shields.io/badge/windows-10-important) &nbsp;
 
-Python password generator for Linux and Windows
+Python wachtwoord generator voor Windows
 
 Bedankt voor het gebruik van de Password Generator, blijf op de hoogte van alle nieuwe mogelijkheden
 in toekomstige updates. 
