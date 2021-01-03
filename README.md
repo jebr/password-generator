@@ -11,7 +11,7 @@ in toekomstige updates.
 Eventuele bugs, verbeteringen en suggesties voor de Password Generator
 kun je plaatsen in de [Issue Tracker](https://github.com/jebr/password-generator/issues). 
 
-[![Screenshot](https://github.com/jebr/password-generator/blob/master/docs/readme-docs/password-generator-v10.png "Password Generator Screenshots")](https://github.com/jebr/password-generator/releases)
+[![Screenshot](https://github.com/jebr/password-generator/blob/main/docs/readme-docs/password-generator-v10.png "Password Generator Screenshots")](https://github.com/jebr/password-generator/releases)
 
 # Download
 <a href="https://github.com/jebr/password-generator/releases" alt="Download">
