@@ -14,21 +14,22 @@ import passgen as pg
 # Software version
 current_version = float(1.0)
 
-
 try:
     os.chdir(os.path.dirname(sys.argv[0]))
-except Exception:
+except Exception as e:
     pass
+
 
 def resource_path(relative_path):
     """ Get absolute path to resource, dev and for PyInstaller """
     try:
         # PyInstaller creates a temp folder and stores path in _MEIPASS
         base_path = sys._MEIPASS
-    except Exception:
+    except Exception as e:
         base_path = os.environ.get("_MEIPASS2", os.path.abspath("."))
     # logging.info('Pyinstaller file location {}'.format(base_path))
     return os.path.join(base_path, relative_path)
+
 
 DUTCH_DICT = resource_path('resources/dictionaries/wordlist_dutch.json')
 ENGLISH_DICT = resource_path('resources/dictionaries/wordlist_english.json')
@@ -45,8 +46,14 @@ SYMBOLS6 = "{[()]}"
 ui_main_window = resource_path('resources/ui/main_window.ui')
 ui_info_window = resource_path('resources/ui/info_dialog.ui')
 icon_app_logo = resource_path('icons/password-generator-icon.ico')
-icon_generate_password = resource_path('icons/glyphicons-basic-82-refresh@3x.png')
+icon_generate_password = resource_path(
+    'icons/glyphicons-basic-82-refresh@3x.png')
 icon_copy_password = resource_path('icons/glyphicons-basic-614-copy@3x.png')
+
+
+def open_info_window():
+    info_window_ = InfoWindow()
+    info_window_.exec_()
 
 
 class MainPage(QtWidgets.QMainWindow):
@@ -57,7 +64,7 @@ class MainPage(QtWidgets.QMainWindow):
         self.setMinimumSize(760, 390)
         self.setWindowIcon(QtGui.QIcon(icon_app_logo))
         self.setWindowTitle("Password Generator")
-        self.action_about.triggered.connect(self.open_info_window)
+        self.action_about.triggered.connect(open_info_window)
         # Pushbuttons
         self.pb_generate.clicked.connect(self.generate_passsword_button)
         self.pb_copy.clicked.connect(self.copy_password)
@@ -66,8 +73,10 @@ class MainPage(QtWidgets.QMainWindow):
         self.pb_copy.setText("")
         self.pb_copy.setIcon(QIcon(QPixmap(icon_copy_password)))
         # Password Sliders, spinboxes and checkboxes
-        self.slider_password.valueChanged.connect(self.password_slider_value_changed)
-        self.spin_password.valueChanged.connect(self.password_spin_value_changed)
+        self.slider_password.valueChanged.connect(
+            self.password_slider_value_changed)
+        self.spin_password.valueChanged.connect(
+            self.password_spin_value_changed)
         self.check_az_capital.stateChanged.connect(self.create_password)
         self.check_az_lower.stateChanged.connect(self.create_password)
         self.check_numbers.stateChanged.connect(self.create_password)
@@ -78,12 +87,18 @@ class MainPage(QtWidgets.QMainWindow):
         self.check_symbols5.stateChanged.connect(self.create_password)
         self.check_symbols6.stateChanged.connect(self.create_password)
         # Passphrase Sliders, spinboxes and checkboxes
-        self.slider_passphrase.valueChanged.connect(self.passphrase_slider_value_changed)
-        self.spin_passphrase.valueChanged.connect(self.passphrase_spin_value_changed)
-        self.combo_passphrase_seperator.currentIndexChanged.connect(self.create_passphrase)
-        self.combo_passphrase_text.currentIndexChanged.connect(self.create_passphrase)
-        self.combo_passphrase_lang.currentIndexChanged.connect(self.create_passphrase)
-        self.check_passphrase_numbers.stateChanged.connect(self.create_passphrase)
+        self.slider_passphrase.valueChanged.connect(
+            self.passphrase_slider_value_changed)
+        self.spin_passphrase.valueChanged.connect(
+            self.passphrase_spin_value_changed)
+        self.combo_passphrase_seperator.currentIndexChanged.connect(
+            self.create_passphrase)
+        self.combo_passphrase_text.currentIndexChanged.connect(
+            self.create_passphrase)
+        self.combo_passphrase_lang.currentIndexChanged.connect(
+            self.create_passphrase)
+        self.check_passphrase_numbers.stateChanged.connect(
+            self.create_passphrase)
         # Check current tabwidget on change between tabs
         self.tabWidget.currentChanged.connect(self.tabwidget_changed)
         # Init functions
@@ -91,11 +106,13 @@ class MainPage(QtWidgets.QMainWindow):
         self.lb_grade.setText("Kwaliteit: ")
         # Shortcuts for buttons
         self.generate_password_btn = QShortcut(QKeySequence('Return'), self)
-        self.generate_password_btn.activated.connect(self.generate_passsword_button)
+        self.generate_password_btn.activated.connect(
+            self.generate_passsword_button)
         self.copy_password_btn = QShortcut(QKeySequence('Ctrl+C'), self)
         self.copy_password_btn.activated.connect(self.copy_password)
         # Check if password is editted
-        self.line_generated_password.textChanged.connect(self.check_password_strength)
+        self.line_generated_password.textChanged.connect(
+            self.check_password_strength)
 
     def create_password(self):
         chars = []
@@ -143,7 +160,10 @@ class MainPage(QtWidgets.QMainWindow):
             dictionary = DUTCH_DICT
         elif dictionary == 1:
             dictionary = ENGLISH_DICT
-        passphrase = pg.PasswordGenerator.dictionary_passphrase(word_count, seperator, font_style, dictionary)
+        passphrase = pg.PasswordGenerator.dictionary_passphrase(word_count,
+                                                                seperator,
+                                                                font_style,
+                                                                dictionary)
         if self.check_passphrase_numbers.isChecked():
             password = pg.PasswordGenerator.create_password(4, NUMBERS)
             passphrase = passphrase + seperator + (password)
@@ -199,25 +219,24 @@ class MainPage(QtWidgets.QMainWindow):
         password_length = len(self.line_generated_password.text())
         if password_length < 6:
             self.progress_password_strength.setValue(20)
-            self.progress_password_strength.setStyleSheet("QProgressBar::chunk {background-color: #d72a28;}")
+            self.progress_password_strength.setStyleSheet(
+                "QProgressBar::chunk {background-color: #d72a28;}")
             self.lb_grade.setText("Kwaliteit: Slecht")
         if 6 < password_length < 16:
             self.progress_password_strength.setValue(50)
-            self.progress_password_strength.setStyleSheet("QProgressBar::chunk {background-color: #d4a32b;}")
+            self.progress_password_strength.setStyleSheet(
+                "QProgressBar::chunk {background-color: #d4a32b;}")
             self.lb_grade.setText("Kwaliteit: Matig")
         if 16 < password_length < 25:
             self.progress_password_strength.setValue(70)
-            self.progress_password_strength.setStyleSheet("QProgressBar::chunk {background-color: #bcd728;}")
+            self.progress_password_strength.setStyleSheet(
+                "QProgressBar::chunk {background-color: #bcd728;}")
             self.lb_grade.setText("Kwaliteit: Goed")
         if password_length > 25:
             self.progress_password_strength.setValue(100)
             self.progress_password_strength.setStyleSheet(
                 "QProgressBar::chunk {background-color: #78d728;}")
             self.lb_grade.setText("Kwaliteit: Uitstekend")
-
-    def open_info_window(self):
-        info_window_ = InfoWindow()
-        info_window_.exec_()
 
 
 class InfoWindow(QDialog):
@@ -235,37 +254,46 @@ class InfoWindow(QDialog):
         self.label_info_logo.move(140, 20)
         # Labels
         self.label_info_title.setText(f'Password Generator v{current_version}')
-        self.label_info_link.setText('<a href="https://github.com/jebr/password-generator">GitHub repository</a>')
+        self.label_info_link.setText(
+            '<a href="https://github.com/jebr/password-generator">'
+            'GitHub repository</a>')
         self.label_info_link.setOpenExternalLinks(True)
         self.label_info_dev.setText('Developers\nJeroen Brauns')
         self.pushButton_update_check.clicked.connect(self.check_update)
         self.lb_update_error.setText("")
 
     def check_update(self):
-        url = 'https://raw.githubusercontent.com/jebr/password-generator/main/version.txt'
+        url = 'https://raw.githubusercontent.com/jebr/password-generator/' \
+              'main/version.txt'
         try:
             resp = requests.get(url, timeout=2)
         except Exception as e:
             self.lb_update_error.setStyleSheet("color: red")
-            self.lb_update_error.setText("Geen internetverbinding<br>Controleren niet mogelijk")
+            self.lb_update_error.setText(
+                "Geen internetverbinding<br>Controleren niet mogelijk")
             return 'Connection Error'
         if not resp.ok:
             self.lb_update_error.setStyleSheet("color: red")
-            self.lb_update_error.setText("Geen internetverbinding<br>Controleren niet mogelijk")
+            self.lb_update_error.setText(
+                "Geen internetverbinding<br>Controleren niet mogelijk")
             return 'Connection Error'
         latest_version = float(resp.text)
-        self.new_version = latest_version
         if latest_version <= current_version:
             self.lb_update_error.setStyleSheet("color: green")
             self.lb_update_error.setText("Je gebruikt de nieuwste versie")
+            start_time = threading.Timer(3, self.set_update_text)
+            start_time.start()
         else:
             self.lb_update_error.setStyleSheet("color: orange")
-            self.lb_update_error.setText(f"Er is een nieuwe versie beschikbaar v{latest_version}")
-        start_time = threading.Timer(3, self.set_update_text)
-        start_time.start()
+            self.lb_update_error.setText(
+                f"Er is een nieuwe versie beschikbaar\n"
+                f"<a href='https://github.com/jebr/password-generator/"
+                f"releases'>Download versie v{latest_version}</a>")
+
 
     def set_update_text(self):
         self.lb_update_error.setText("")
+
 
 def main():
     app = QApplication(sys.argv)
@@ -276,4 +304,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
