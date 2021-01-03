@@ -141,3 +141,4 @@ git status
 /example_data
 /src/build
 System Volume Information
+/src/setup.py
