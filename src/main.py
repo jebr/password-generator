@@ -3,6 +3,7 @@ import sys
 import threading
 import pyperclip
 import webbrowser
+import json
 from PyQt5.QtGui import QIcon, QPixmap, QKeySequence
 from PyQt5.QtWidgets import QApplication, QShortcut, QDialog, QLabel
 from PyQt5.uic import loadUi
@@ -10,12 +11,6 @@ from PyQt5 import QtWidgets, QtGui, QtCore
 
 import passgen as pg
 import basicfunc as bf
-
-# Software version
-current_version = float(1.1)
-update_check_url = 'https://raw.githubusercontent.com/jebr/' \
-                  'password-generator/main/version.txt'
-release_url = "https://github.com/jebr/password-generator/releases"
 
 try:
     os.chdir(os.path.dirname(sys.argv[0]))
@@ -54,6 +49,18 @@ icon_generate_password = resource_path(
     'icons/glyphicons-basic-82-refresh@3x.png')
 icon_copy_password = resource_path('icons/glyphicons-basic-614-copy@3x.png')
 
+
+# def software_version():
+#     with open(resource_path('version.txt'), 'r') as version_file:
+#         # version = json.load(version_file)
+#         version = version_file.readline()
+#         return float(version)
+
+# Software version
+current_version = 1.1
+update_check_url = 'https://raw.githubusercontent.com/jebr/' \
+                  'password-generator/main/version.txt'
+release_url = "https://github.com/jebr/password-generator/releases"
 
 def open_info_window():
     info_window_ = InfoWindow()

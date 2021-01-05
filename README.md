@@ -12,4 +12,4 @@ Eventuele bugs, verbeteringen en suggesties voor de Password Generator kun je pl
 [![Screenshot](https://github.com/jebr/password-generator/blob/main/docs/readme-docs/password-generator-v10.png "Password Generator Screenshots")](https://github.com/jebr/password-generator/releases)
 
 
-<a href="https://github.com/jebr/password-generator/releases/download/v1.0/Password.Generator-1.0-amd64.msi" alt="Download"><img src="src/icons/download.png" alt="Download Password Generator" width="200" height="50"></a>
+<a href="https://github.com/jebr/password-generator/releases/download/v1.1/Password.Generator-1.1-amd64.exe" alt="Download"><img src="src/icons/download.png" alt="Download Password Generator" width="200" height="50"></a>
