@@ -12,7 +12,7 @@ import passgen as pg
 import basicfunc as bf
 
 # Software version
-current_version = float(1.0)
+current_version = float(1.1)
 update_check_url = 'https://raw.githubusercontent.com/jebr/' \
                   'password-generator/main/version.txt'
 release_url = "https://github.com/jebr/password-generator/releases"
@@ -73,6 +73,7 @@ def auto_update_check():
         return
     else:
         open_update_window(check)
+
 
 def open_download_link():
     try:
