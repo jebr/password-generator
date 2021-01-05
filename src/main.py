@@ -1,18 +1,21 @@
 import os
 import sys
 import threading
-
 import pyperclip
-import requests
+import webbrowser
 from PyQt5.QtGui import QIcon, QPixmap, QKeySequence
 from PyQt5.QtWidgets import QApplication, QShortcut, QDialog, QLabel
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets, QtGui, QtCore
 
 import passgen as pg
+import basicfunc as bf
 
 # Software version
 current_version = float(1.0)
+update_check_url = 'https://raw.githubusercontent.com/jebr/' \
+                  'password-generator/main/version.txt'
+release_url = "https://github.com/jebr/password-generator/releases"
 
 try:
     os.chdir(os.path.dirname(sys.argv[0]))
@@ -45,6 +48,7 @@ SYMBOLS6 = "{[()]}"
 
 ui_main_window = resource_path('resources/ui/main_window.ui')
 ui_info_window = resource_path('resources/ui/info_dialog.ui')
+ui_update_window = resource_path('resources/ui/update_window.ui')
 icon_app_logo = resource_path('icons/password-generator-icon.ico')
 icon_generate_password = resource_path(
     'icons/glyphicons-basic-82-refresh@3x.png')
@@ -54,6 +58,27 @@ icon_copy_password = resource_path('icons/glyphicons-basic-614-copy@3x.png')
 def open_info_window():
     info_window_ = InfoWindow()
     info_window_.exec_()
+
+
+def open_update_window(latest_version):
+    update_window = UpdateWindow(latest_version)
+    update_window.exec_()
+
+
+def auto_update_check():
+    check = bf.BasicFunc.update_check(update_check_url, current_version)
+    if check == "no-connection":
+        return
+    elif check == "up-to-date":
+        return
+    else:
+        open_update_window(check)
+
+def open_download_link():
+    try:
+        webbrowser.open(release_url, new=1)
+    except ImportError:
+        pass
 
 
 class MainPage(QtWidgets.QMainWindow):
@@ -113,6 +138,8 @@ class MainPage(QtWidgets.QMainWindow):
         # Check if password is editted
         self.line_generated_password.textChanged.connect(
             self.check_password_strength)
+        # Auto check for new updates
+        auto_update_check()
 
     def create_password(self):
         chars = []
@@ -263,35 +290,41 @@ class InfoWindow(QDialog):
         self.lb_update_error.setText("")
 
     def check_update(self):
-        url = 'https://raw.githubusercontent.com/jebr/password-generator/' \
-              'main/version.txt'
-        try:
-            resp = requests.get(url, timeout=2)
-        except Exception as e:
+        check = bf.BasicFunc.update_check(update_check_url, current_version)
+        if check == "no-connection":
             self.lb_update_error.setStyleSheet("color: red")
             self.lb_update_error.setText(
                 "Geen internetverbinding<br>Controleren niet mogelijk")
-            return 'Connection Error'
-        if not resp.ok:
-            self.lb_update_error.setStyleSheet("color: red")
-            self.lb_update_error.setText(
-                "Geen internetverbinding<br>Controleren niet mogelijk")
-            return 'Connection Error'
-        latest_version = float(resp.text)
-        if latest_version <= current_version:
+        elif check == "up-to-date":
             self.lb_update_error.setStyleSheet("color: green")
             self.lb_update_error.setText("Je gebruikt de nieuwste versie")
             start_time = threading.Timer(3, self.set_update_text)
             start_time.start()
         else:
-            self.lb_update_error.setStyleSheet("color: orange")
-            self.lb_update_error.setText(
-                f"Er is een nieuwe versie beschikbaar\n"
-                f"<a href='https://github.com/jebr/password-generator/"
-                f"releases'>Download versie v{latest_version}</a>")
+            self.close()
+            open_update_window(check)
 
     def set_update_text(self):
         self.lb_update_error.setText("")
+
+
+class UpdateWindow(QDialog):
+    def __init__(self, latest_version):
+        super().__init__(None, QtCore.Qt.WindowCloseButtonHint)
+        loadUi(ui_update_window, self)
+        self.setWindowIcon(QtGui.QIcon(icon_app_logo))
+        self.setFixedSize(320, 207)
+        # Logo
+        self.lb_logo.setText("")
+        self.lb_logo = QLabel(self)
+        logo_icon = QPixmap(icon_app_logo)
+        logo_icon = logo_icon.scaledToWidth(40)
+        self.lb_logo.setPixmap(logo_icon)
+        self.lb_logo.move(140, 20)
+        # Labels
+        self.lb_latest_version.setText(f'{latest_version}')
+        # Download button
+        self.pb_download_new_version.clicked.connect(open_download_link)
 
 
 def main():
