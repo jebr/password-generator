@@ -166,7 +166,7 @@ class MainPage(QtWidgets.QMainWindow):
                                                                 dictionary)
         if self.check_passphrase_numbers.isChecked():
             password = pg.PasswordGenerator.create_password(4, NUMBERS)
-            passphrase = passphrase + seperator + (password)
+            passphrase = passphrase + seperator + password
             self.line_generated_password.setText(passphrase)
         else:
             self.line_generated_password.setText(passphrase)
@@ -289,7 +289,6 @@ class InfoWindow(QDialog):
                 f"Er is een nieuwe versie beschikbaar\n"
                 f"<a href='https://github.com/jebr/password-generator/"
                 f"releases'>Download versie v{latest_version}</a>")
-
 
     def set_update_text(self):
         self.lb_update_error.setText("")

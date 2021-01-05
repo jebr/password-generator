@@ -605,7 +605,7 @@
         </font>
        </property>
        <property name="statusTip">
-        <string>Copy Password (Ctrl + C)</string>
+        <string>Kopieer wachtwoord (Ctrl + C)</string>
        </property>
        <property name="text">
         <string>pb_copy</string>
@@ -645,7 +645,7 @@
      <x>0</x>
      <y>0</y>
      <width>759</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuInfo">
