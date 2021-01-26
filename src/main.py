@@ -182,7 +182,7 @@ class MainPage(QtWidgets.QMainWindow):
 
         if count_length != 0:
             characters = str.join('', chars)
-            length = self.slider_password.value() + count_length
+            length = self.slider_password.value()
             password = pg.PasswordGenerator.create_password(length, characters)
             self.line_generated_password.setText(password)
 
@@ -252,26 +252,34 @@ class MainPage(QtWidgets.QMainWindow):
 
     def check_password_strength(self):
         password_length = len(self.line_generated_password.text())
-        if password_length < 6:
+        password_quality = ""
+        if password_length <= 0:
+            self.progress_password_strength.setValue(0)
+            password_quality = "Slecht"
+        if password_length >= 1 and password_length <= 6:
             self.progress_password_strength.setValue(20)
             self.progress_password_strength.setStyleSheet(
                 "QProgressBar::chunk {background-color: #d72a28;}")
-            self.lb_grade.setText("Kwaliteit: Slecht")
-        if 6 < password_length < 16:
+            password_quality = "Slecht"
+        if 6 < password_length <= 16:
             self.progress_password_strength.setValue(50)
             self.progress_password_strength.setStyleSheet(
                 "QProgressBar::chunk {background-color: #d4a32b;}")
-            self.lb_grade.setText("Kwaliteit: Matig")
-        if 16 < password_length < 25:
+            password_quality = "Matig"
+            # self.lb_grade.setText(f"Kwaliteit: Matig ({password_length})")
+        if 16 < password_length <= 25:
             self.progress_password_strength.setValue(70)
             self.progress_password_strength.setStyleSheet(
                 "QProgressBar::chunk {background-color: #bcd728;}")
-            self.lb_grade.setText("Kwaliteit: Goed")
+            password_quality = "Goed"
+            # self.lb_grade.setText(f"Kwaliteit: Goed ({password_length})")
         if password_length > 25:
             self.progress_password_strength.setValue(100)
             self.progress_password_strength.setStyleSheet(
                 "QProgressBar::chunk {background-color: #78d728;}")
-            self.lb_grade.setText("Kwaliteit: Uitstekend")
+            password_quality = "Uitstekend"
+            # self.lb_grade.setText(f"Kwaliteit: Uitstekend ({password_length})")
+        self.lb_grade.setText(f"Kwaliteit: {password_quality} ({password_length})")
 
 
 class InfoWindow(QDialog):
