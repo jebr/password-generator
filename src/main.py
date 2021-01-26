@@ -57,9 +57,9 @@ icon_copy_password = resource_path('icons/glyphicons-basic-614-copy@3x.png')
 #         return float(version)
 
 # Software version
-current_version = 1.1
+current_version = 1.2
 update_check_url = 'https://raw.githubusercontent.com/jebr/' \
-                  'password-generator/main/version.txt'
+                   'password-generator/main/src/version.txt'
 release_url = "https://github.com/jebr/password-generator/releases"
 
 def open_info_window():
