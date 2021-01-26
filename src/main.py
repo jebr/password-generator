@@ -50,17 +50,18 @@ icon_generate_password = resource_path(
 icon_copy_password = resource_path('icons/glyphicons-basic-614-copy@3x.png')
 
 
-# def software_version():
-#     with open(resource_path('version.txt'), 'r') as version_file:
-#         # version = json.load(version_file)
-#         version = version_file.readline()
-#         return float(version)
+def software_version():
+    with open(resource_path('version.txt')) as version_file:
+        version = version_file.readline()
+        return float(version)
+
 
 # Software version
-current_version = 1.2
+current_version = software_version()
 update_check_url = 'https://raw.githubusercontent.com/jebr/' \
                    'password-generator/main/src/version.txt'
 release_url = "https://github.com/jebr/password-generator/releases"
+
 
 def open_info_window():
     info_window_ = InfoWindow()
